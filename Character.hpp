@@ -18,19 +18,23 @@ class Character
 		int hp; //curent hp
 		int strength;
 		int armor;
-
-
+		vector<Item> inventory;
+	
 	public:
 	    /**
 	     * @brief A parameterised constructor for a character
 	     */
 		Character(string _name, int hp, int vit, int str, int arm);
+		Character();
 
-		string getCharacterName();
+		string getCharName();
 		int getHP();
+		void setHP(int hp);
 		int getVitality();
 		int getStrength();
 		int getArmor();
+		void addItem(Item it);
+		void removeItem(Item it);
 };
 
 #endif //CHARACTER_HPP

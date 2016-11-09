@@ -7,23 +7,21 @@
 #include "Character.hpp"
 #include "Item.hpp"
 #include "NPC.hpp"
-
-//#include "objects/objects.hpp"
-//#include "util/util.hpp"
+#include "Area.hpp"
+#include "World.hpp"
+#include "Combat.hpp"
 
 using namespace std;
 
 int main(int argc, char *argv[]) 
 {
-	string input;
+	string playerName;
 
-	//create player with input name from user
-	input = IntroDialogue();
+	// Display intro dialogue and get player name
+	playerName = IntroDialogue();
+	World gameWorld(playerName);
 
-	Character p1("Grom",100,90,3,0);
-
-	vector<string> jindalDialogue;
-	NPC merchant(jindalDialogue,"Jindal",60,60,1,10);
+	cout << CombatEncounter(gameWorld.getPlayer(), gameWorld.getArea(0).getNPCs().at(0)) << endl;
 
     return 0;
 }
