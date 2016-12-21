@@ -9,10 +9,10 @@ World::World(string name)
 
 	/* NPCs */
 	vector<string> guardDialogue;
-	NPC guard(guardDialogue, "Guard", 40, 40, 5, 2);
+	NPC guard(guardDialogue, "Guard", 40, 40, 20, 75);
 
 	/* Player */
-	Character _player(name, 80, 100, 10, 10);
+	Character _player(name, 80, 100, 10, 40);
 	_player.addItem(pipe);
 
 	/* Areas */

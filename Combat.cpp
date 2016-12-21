@@ -1,4 +1,6 @@
 #include "Combat.hpp"
+#include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
@@ -12,28 +14,49 @@ string CombatEncounter(Character player, NPC enemy)
 {
 	bool playerTurn = true;
 	string buf;
-	string message;	
+	string message;
+	srand((unsigned)time(0));
+	int random;	
 
 	while (player.getHP() > 0 && enemy.getHP() > 0)
 	{
 		if (playerTurn)
 		{
-			cout << player.getCharName() << " attacks " << enemy.getCharName() << " for 15 damage" << endl;
-			enemy.setHP(enemy.getHP()-15);
+			random = (rand()%100)+1;
+			if (random > enemy.getArmor())
+			{
+				cout << player.getCharName() << " attacks " << enemy.getCharName() << " for " << player.getStrength() << " damage" << endl;
+				enemy.setHP(enemy.getHP()-player.getStrength());
+			}
+			else
+			{
+				cout << player.getCharName() << " misses and deals no damage" << endl;
+			}
+
 			if (enemy.getHP() < 0)
 			{
 				enemy.setHP(0);
-				message = player.getCharName() + " kills " + enemy.getCharName();
+				cout << player.getCharName() << " kills " << enemy.getCharName();
 			}			
 		}
 		else
 		{
-			cout << enemy.getCharName() << " attacks "<< player.getCharName() << " player for 10 damage" << endl;
-			player.setHP(player.getHP()-10);
+			random = (rand()%100)+1;
+			if (random > player.getArmor())
+			{
+				cout << enemy.getCharName() << " attacks "<< player.getCharName() << " player for " << enemy.getStrength() << " damage" << endl;
+				player.setHP(player.getHP()-enemy.getStrength());
+			}
+
+			else
+			{
+				cout << enemy.getCharName() << " misses and deals no damage" << endl;
+			}
+	
 			if (player.getHP() < 0)
 			{
 				player.setHP(0);
-				message = enemy.getCharName() + " kills " + player.getCharName();
+				cout <<  enemy.getCharName() << " kills " << player.getCharName();
 			}
 		}
 

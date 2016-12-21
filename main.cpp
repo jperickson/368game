@@ -23,5 +23,6 @@ int main(int argc, char *argv[])
 
 	cout << CombatEncounter(gameWorld.getPlayer(), gameWorld.getArea(0).getNPCs().at(0)) << endl;
 
+	cout << "Game Over" << endl;
     return 0;
 }
