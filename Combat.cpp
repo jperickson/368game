@@ -36,7 +36,7 @@ string CombatEncounter(Character player, NPC enemy)
 			if (enemy.getHP() < 0)
 			{
 				enemy.setHP(0);
-				cout << player.getCharName() << " kills " << enemy.getCharName();
+				cout << player.getCharName() << " kills " << enemy.getCharName() << endl;
 			}			
 		}
 		else
@@ -56,7 +56,7 @@ string CombatEncounter(Character player, NPC enemy)
 			if (player.getHP() < 0)
 			{
 				player.setHP(0);
-				cout <<  enemy.getCharName() << " kills " << player.getCharName();
+				cout <<  enemy.getCharName() << " kills " << player.getCharName() << endl;
 			}
 		}
 
@@ -74,6 +74,11 @@ string CombatEncounter(Character player, NPC enemy)
 		getline(cin, buf);
 	}
 
+	if (player.getHP() <= 0)
+	{
+		cout << "Your vision fades to black. You are dead" << endl;
+		exit(0);
+	}
 	return message;
 }
 
