@@ -3,6 +3,7 @@
 
 using namespace std;
 
+//Fancy struct
 Character::Character()
 {
 	name = "Default";
